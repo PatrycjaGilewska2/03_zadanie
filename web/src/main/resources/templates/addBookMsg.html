@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{fragments/layout}">
+
+<head>
+    <title>Add book message</title>
+</head>
+
+<body>
+    <div layout:fragment="content" th:remove="tag">
+        <section>
+            <div class="jumbotron">
+                <div class="container">
+                    <h4>Result of adding book</h4>
+                    <p th:text="${message}"></p>
+                </div>
+                <p>
+                    <a th:href="@{'/welcome'}" class="btn btn-primary">
+                        <span class="glyphicon-info-sign glyphicon" /></span> Home Page
+                    </a>
+                </p>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

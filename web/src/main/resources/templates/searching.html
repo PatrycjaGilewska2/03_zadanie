@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{fragments/layout}">
+
+<head>
+    <title>Search book</title>
+</head>
+
+<body>
+    <div layout:fragment="content" th:remove="tag">
+        <section>
+            <div class="jumbotron">
+                <div class="container">
+                    <p>Search for a book</p>
+                </div>
+            </div>
+        </section>
+        <section class="container">
+            <form action="#" th:action="@{/books/search}" th:object="${searchBook}" method="post" class="form-horizontal">
+                <fieldset>
+                    <legend>Search book</legend>
+
+                    <!-- Sample template for some fields in Book Entity -->
+                    <div class="form-group">
+                        <label class="control-label col-lg-2" for="name">Title</label>
+                        <div class="col-lg-10">
+                            <input id="name" type="text" th:field="*{title}" class="form:input-large" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2" for="authors">Author</label>
+                        <div class="col-lg-10">
+                            <input id="authors" type="text" th:field="*{authors}" class="form:input-large" />
+                        </div>
+                    </div>
+                    <div th:if="${error}">
+                            <h4>Title or author cannot be shorter than 3 sings!</h4>
+                        </div>
+                </fieldset>
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <input type="submit" id="btnAdd" class="btn btn-primary" value="Search" />
+                    </div>
+                </div>
+            </form>
+        </section>
+        <section class="container">
+            <div class="row">
+                <th:block th:each="book : ${bookList}">
+                    <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h3 th:text="${book.id}"></h3>
+                                <p th:text="${book.title}"></p>
+                                <p th:text="${book.authors}"></p>
+                                <p th:text="${book.status}">Status: </p>
+                                <p>
+                                    <a th:href="@{'/books/book?id='+${book.id}}" class="btn btn-primary">
+                                        <span class="glyphicon-info-sign glyphicon" /></span> Details
+                                    </a>
+
+                                </p>
+                                <p>
+                                    <a th:href="@{'/books/delete/'+${book.id}}" class="btn btn-primary">
+                                        <span class="glyphicon-info-sign glyphicon" /></span> Delete
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
+            </div>
+        </section>
+        <div th:if="${emptyResult}">
+            <h4>There is no book with given criteria</h4>
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{fragments/layout}">
+
+<head>
+    <title>Add new book</title>
+</head>
+
+<body>
+    <div layout:fragment="content" th:remove="tag">
+        <section>
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Book</h1>
+                    <p>Add new book</p>
+                </div>
+            </div>
+        </section>
+        <section class="container">
+            <form action="#" th:action="@{/books/add}" th:object="${newBook}" method="post" class="form-horizontal">
+                <fieldset>
+                    <legend>Add new book</legend>
+
+                    <!-- Sample template for some fields in Book Entity -->
+                    <div class="form-group">
+                        <label class="control-label col-lg-2" for="name">Title</label>
+                        <div class="col-lg-10">
+                            <input id="name" type="text" th:field="*{title}" class="form:input-large" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2" for="authors">Author</label>
+                        <div class="col-lg-10">
+                            <input id="authors" type="text" th:field="*{authors}" class="form:input-large" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-2" for="status">Status</label>
+                        <div id="status" class="col-lg-10">
+                            <input type="radio" th:name="${status}" th:field="*{status}" th:value="FREE">Free</input>
+                            <input type="radio" th:name="${status}" th:field="*{status}" th:value="LOAN">Loan</input>
+                            <input type="radio" th:name="${status}" th:field="*{status}" th:value="MISSING">Missing</input>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <input type="submit" id="btnAdd" class="btn btn-primary" value="Create" />
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</body>
+
+</html>

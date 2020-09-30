@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{fragments/layout}">
+
+<head>
+    <title>Book Details</title>
+</head>
+
+<body>
+    <div layout:fragment="content" th:remove="tag">
+        <section>
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Book info</h1>
+                </div>
+            </div>
+        </section>
+        <section class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <h3 th:text="${book.id}"></h3>
+                    <p>
+                        <strong>Book title: </strong>
+                        <spanth th:text="${book.title}"></spanth>
+                    </p>
+                    <p>
+                        <strong>Wrote by: </strong>
+                        <spanth th:text="${book.authors}"></spanth>
+                    </p>
+                    <p>
+                        <a th:href="@{'/books'}" class="btn btn-default">
+                            <span class="glyphicon-hand-left glyphicon"></span> back
+                        </a>
+
+                    </p>
+
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

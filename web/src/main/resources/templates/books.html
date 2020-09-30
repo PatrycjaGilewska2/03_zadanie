@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{fragments/layout}">
+
+<head>
+    <title>Books</title>
+</head>
+
+<body>
+    <div layout:fragment="content" th:remove="tag">
+        <section>
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Books</h1>
+                    <p>This page contains all informations about books</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="row">
+                <th:block th:each="book : ${bookList}">
+                    <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h3 th:text="${book.id}"></h3>
+                                <p th:text="${book.title}"></p>
+                                <p th:text="${book.authors}"></p>
+                                <p th:text="${book.status}">Status: </p>
+                                <p>
+                                    <a th:href="@{'/books/book?id='+${book.id}}" class="btn btn-primary">
+                                        <span class="glyphicon-info-sign glyphicon" /></span> Details
+                                    </a>
+                                </p>
+                                <p>
+                                    <a sec:authorize="hasRole('ADMIN')" th:href="@{'/books/delete/'+${book.id}}" class="btn btn-primary">
+                                        <span class="glyphicon-info-sign glyphicon" /></span> Delete
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{fragments/layout}">
+
+<head>
+	<title>Access denied</title>
+</head>
+
+<body>
+	<div layout:fragment="content" th:remove="tag">
+		<section>
+			<div class="jumbotron">
+				<div class="container">
+					<h1>Book is successfully deleted</h1>
+					<p>Book is successfully deleted</p>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
+				<div class="thumbnail">
+					<div class="caption">
+						<p>
+							<a th:href="@{/books}" class="btn btn-primary">
+								<span class="glyphicon-info-sign glyphicon" /></span> Back
+							</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+
+</html>
